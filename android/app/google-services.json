@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "328064855911",
+    "project_id": "ostadjee-58a5d",
+    "storage_bucket": "ostadjee-58a5d.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:328064855911:android:088d65d90b91581e6f49c2",
+        "android_client_info": {
+          "package_name": "com.ostadjee.application"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "328064855911-5tj5ov28nhdfnsn9108q2bf629osalib.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.ostadjee.application",
+            "certificate_hash": "9cf757a68bb3395e37577539a9b8e005b2166981"
+          }
+        },
+        {
+          "client_id": "328064855911-f214vc4a0t1o6edrdqgsupgfvitiu7gq.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.ostadjee.application",
+            "certificate_hash": "6fbf5dcc69821756ac119fa83930fb9a11bb0c53"
+          }
+        },
+        {
+          "client_id": "328064855911-ks84ce8rht2r9hdbjl1itcddosankq50.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAwoHu_5GVKecLVOLLFHMF6aoyf4BFlZPM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "328064855911-ks84ce8rht2r9hdbjl1itcddosankq50.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
