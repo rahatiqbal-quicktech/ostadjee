@@ -66,6 +66,7 @@ dependencies:
   video_player:
   webview_flutter: ^3.0.4
   progress_indicators: ^1.0.0
+  launch_review: ^3.0.1
 
 #  flutter_facebook_auth:
 #  sign_in_with_apple:

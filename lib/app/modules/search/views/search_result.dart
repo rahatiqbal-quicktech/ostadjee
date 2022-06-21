@@ -18,6 +18,7 @@ class SearchResult extends GetView<FrontendController> {
 
   @override
   Widget build(BuildContext context) {
+    print("This is what i am looking for");
     return Scaffold(
         key: _scaffoldKey,
         bottomNavigationBar: const CustomBottomBarWidget(),

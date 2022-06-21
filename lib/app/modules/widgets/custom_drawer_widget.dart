@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:launch_review/launch_review.dart';
 import 'package:ostadjee/app/common/util/exports.dart';
 import 'package:ostadjee/app/controllers/frontend_controller.dart';
 import 'package:ostadjee/app/modules/widgets/custom_drawer_social_icons.dart';
@@ -151,9 +152,15 @@ class CustomDrawerWidget extends GetView<FrontendController> {
                     title: Strings.shareApp,
                     onTap: controller.onShareAppClick,
                   ),
-                  CustomListTileWidget(
-                    title: Strings.rateApp,
-                    onTap: controller.onRateAppClick,
+                  GestureDetector(
+                    onTap: () {
+                      LaunchReview.launch(
+                          androidAppId: "com.ostadjee.application");
+                    },
+                    child: CustomListTileWidget(
+                      title: Strings.rateApp,
+                      onTap: () {},
+                    ),
                   ),
                   CustomListTileWidget(
                     title: Strings.privacyPolicy,

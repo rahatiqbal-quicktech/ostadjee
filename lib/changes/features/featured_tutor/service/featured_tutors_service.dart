@@ -14,7 +14,7 @@ class FeaturedTutorsService {
         Uri.parse(fullUrl),
       );
       var data = jsonDecode(response.body.toString());
-      print("Featured tutors service $data");
+      // print("Featured tutors service $data");
 
       if (response.statusCode == 200) {
         return FeaturedTutorsModel.fromJson(data);

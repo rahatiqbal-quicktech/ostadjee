@@ -1,4 +1,5 @@
 import 'package:get/get.dart';
+import 'package:ostadjee/changes/features/all_tutors/controller/all_tutors_controller.dart';
 import 'package:ostadjee/changes/features/can_apply/controller/can_apply_function.dart';
 import 'package:ostadjee/changes/features/featured_tutor/controller/featured_tutors_controller.dart';
 import 'package:ostadjee/changes/features/job_match_list/controller/job_match_list_controller.dart';
@@ -21,4 +22,5 @@ class AllChangedControllers {
   final canApplyFunctionController = Get.put(CanApplyFunction());
   final jobMatchListController = Get.put(JobMatchListController());
   final tuitionInformationController = Get.put(TuitionInformationController());
+  final allTutorsController = Get.put(AllTutorsController());
 }

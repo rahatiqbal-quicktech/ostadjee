@@ -58,6 +58,7 @@ import 'package:ostadjee/app/modules/profile/widgets/tutor_withdraw_list_widget.
 import 'package:ostadjee/app/repository/frontend_repository.dart';
 import 'package:ostadjee/app/routes/app_pages.dart';
 import 'package:ostadjee/changes/features/tutor_department/model/tutor_department_model.dart';
+import 'package:url_launcher/url_launcher.dart';
 import 'package:video_player/video_player.dart';
 
 class FrontendController extends GetxController
@@ -522,8 +523,13 @@ class FrontendController extends GetxController
     Get.offAndToNamed(Routes.PROFILE_VIEW);
   }
 
-  void onContactUsClick() {
-    Get.back();
+  void onContactUsClick() async {
+    try {
+      await launchUrl(Uri.parse("https://ostadjee.com/"));
+    } catch (launch) {
+      Get.snackbar("Error", "Couldn't launch url");
+    }
+    // Get.back();
   }
 
   void onShareAppClick() {
@@ -534,16 +540,31 @@ class FrontendController extends GetxController
     Get.back();
   }
 
-  void onPrivacyPolicyClick() {
+  void onPrivacyPolicyClick() async {
+    try {
+      await launchUrl(Uri.parse("https://ostadjee.com/more/privacy-policy"));
+    } catch (launch) {
+      Get.snackbar("Error", "Couldn't launch url");
+    }
     Get.back();
   }
 
-  void onWebsiteClick() {
-    Get.back();
+  void onWebsiteClick() async {
+    // Get.back();
+    try {
+      await launchUrl(Uri.parse("https://ostadjee.com/"));
+    } catch (launch) {
+      Get.snackbar("Error", "Couldn't launch url");
+    }
   }
 
-  void onAboutUsClick() {
-    Get.back();
+  void onAboutUsClick() async {
+    // Get.back();
+    try {
+      await launchUrl(Uri.parse("https://ostadjee.com/more/about-us"));
+    } catch (launch) {
+      Get.snackbar("Error", "Couldn't launch url");
+    }
   }
 
   void onLogoutClick() {
@@ -838,11 +859,12 @@ class FrontendController extends GetxController
     }
   }
 
-  void searchData() async {
+  void searchData({bool goSearchResultPage = true}) async {
     // String parameter =
     //     "district_id=${selectedDivision == null ? "" : selectedDivision!.id}&area_id=${selectedArea == null ? "" : selectedArea!.id}&medium_id=${selectedMedium == null ? "" : selectedMedium!.id}&department_id=${selectedDepartment == null ? "" : selectedDepartment!.id}&subject_id=${selectedSubject == null ? "" : selectedSubject!.id}&gender_id=${selectedGender == null ? "" : selectedGender!.value}&university_id=${selectedUniveristy == null ? "" : selectedUniveristy!.id}";
-
-    Get.toNamed(Routes.SEARCH_RESULT);
+    if (goSearchResultPage == true) {
+      Get.toNamed(Routes.SEARCH_RESULT);
+    }
 
     if (tutor.value) {
       final _response = await FrontEndRepository().getJobSearch(
@@ -873,6 +895,25 @@ class FrontendController extends GetxController
       } else {
         showErrorToast(_response.object.toString());
       }
+    }
+  }
+
+  Future<TutorModel?> getAllTutorsList() async {
+    // String parameter =
+    //     "district_id=${selectedDivision == null ? "" : selectedDivision!.id}&area_id=${selectedArea == null ? "" : selectedArea!.id}&medium_id=${selectedMedium == null ? "" : selectedMedium!.id}&department_id=${selectedDepartment == null ? "" : selectedDepartment!.id}&subject_id=${selectedSubject == null ? "" : selectedSubject!.id}&gender_id=${selectedGender == null ? "" : selectedGender!.value}&university_id=${selectedUniveristy == null ? "" : selectedUniveristy!.id}";
+
+    final _response = await FrontEndRepository().getTeacherSearch(
+        selectedDivision == null ? "" : selectedDivision!.id.toString(),
+        selectedArea == null ? "" : selectedArea!.id.toString(),
+        selectedMedium == null ? "" : selectedMedium!.id.toString(),
+        selectedGender == null ? "" : selectedGender!.value!,
+        selectedDepartment == null ? "" : selectedDepartment!.id.toString(),
+        selectedSubject == null ? "" : selectedSubject!.id.toString(),
+        selectedUniveristy == null ? "" : selectedUniveristy!.id.toString());
+    if (_response.id == ResponseCode.SUCCESSFUL) {
+      return TutorModel.fromJson(json.decode(_response.object.toString()));
+    } else {
+      showErrorToast(_response.object.toString());
     }
   }
 

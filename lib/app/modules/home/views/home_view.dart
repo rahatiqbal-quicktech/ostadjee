@@ -26,6 +26,7 @@ class HomeView extends GetView<FrontendController> with AllChangedControllers {
   Widget build(BuildContext context) {
     if (controller.tutor.value == false) {
       featuresTutorsController.getFeaturedTutors();
+      allTutorsController.getAllTutor();
     }
     print("controller.tutor.value ${controller.tutor.value}");
     canApplyFunctionController.jobMatchIdList.clear();
@@ -104,8 +105,7 @@ class HomeView extends GetView<FrontendController> with AllChangedControllers {
                   height: 20,
                 ),
                 if (!controller.tutor.value)
-                  TutorsListWidget(
-                      featuresTutorsController: featuresTutorsController),
+                  TutorsListWidget(controller: allTutorsController),
 
                 // if ((controller.candidateTeacherList.value.teacherlist
                 //             ?.isNotEmpty ??

@@ -54,24 +54,28 @@ class TutorProfilePublicView extends GetView<FrontendController> {
                               children: [
                                 Stack(
                                   children: [
-                                    CustomImageWidget(
-                                      imageUrl: controller.tutorDetails.value
-                                          .tutordetails?.image,
-                                    ),
-                                    Positioned(
-                                      bottom: 0,
-                                      right: 0,
-                                      child: Container(
-                                        padding: const EdgeInsets.fromLTRB(
-                                            20, 5, 20, 5),
-                                        color: AppColors.orange,
-                                        child: CustomTextWidget(
-                                          text: Strings.premiumTutor,
-                                          fontSize: Dimens.fontSize20,
-                                          color: AppColors.white,
-                                        ),
+                                    SizedBox(
+                                      height: 250,
+                                      width: double.infinity,
+                                      child: CustomImageWidget(
+                                        imageUrl: controller.tutorDetails.value
+                                            .tutordetails?.image,
                                       ),
-                                    )
+                                    ),
+                                    // Positioned(
+                                    //   bottom: 0,
+                                    //   right: 0,
+                                    //   child: Container(
+                                    //     padding: const EdgeInsets.fromLTRB(
+                                    //         20, 5, 20, 5),
+                                    //     color: AppColors.orange,
+                                    //     child: CustomTextWidget(
+                                    //       text: Strings.premiumTutor,
+                                    //       fontSize: Dimens.fontSize20,
+                                    //       color: AppColors.white,
+                                    //     ),
+                                    //   ),
+                                    // )
                                   ],
                                 ),
                                 Container(

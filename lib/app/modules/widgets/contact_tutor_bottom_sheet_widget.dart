@@ -67,46 +67,46 @@ class ContactTutorBottomSheetWidget extends StatelessWidget {
               const CustomSpaceWidget(
                 height: 10,
               ),
-              CustomTextWidget(
-                text: Strings.emailAddress,
-                fontSize: Dimens.fontSize15,
-                color: AppColors.doveGray,
-                isFullWidth: true,
-              ),
-              Container(
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(5),
-                  border: Border.all(
-                    color: AppColors.kPrimaryColor,
-                  ),
-                ),
-                child: const CustomTextFieldWidget(
-                  hintText: Strings.emailAddress,
-                ),
-              ),
-              const CustomSpaceWidget(
-                height: 10,
-              ),
-              CustomTextWidget(
-                text: Strings.phoneNumber,
-                fontSize: Dimens.fontSize15,
-                color: AppColors.doveGray,
-                isFullWidth: true,
-              ),
-              Container(
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(5),
-                  border: Border.all(
-                    color: AppColors.kPrimaryColor,
-                  ),
-                ),
-                child: const CustomTextFieldWidget(
-                  hintText: Strings.phoneNumber,
-                ),
-              ),
-              const CustomSpaceWidget(
-                height: 10,
-              ),
+              // CustomTextWidget(
+              //   text: Strings.emailAddress,
+              //   fontSize: Dimens.fontSize15,
+              //   color: AppColors.doveGray,
+              //   isFullWidth: true,
+              // ),
+              // Container(
+              //   decoration: BoxDecoration(
+              //     borderRadius: BorderRadius.circular(5),
+              //     border: Border.all(
+              //       color: AppColors.kPrimaryColor,
+              //     ),
+              //   ),
+              //   child: const CustomTextFieldWidget(
+              //     hintText: Strings.emailAddress,
+              //   ),
+              // ),
+              // const CustomSpaceWidget(
+              //   height: 10,
+              // ),
+              // CustomTextWidget(
+              //   text: Strings.phoneNumber,
+              //   fontSize: Dimens.fontSize15,
+              //   color: AppColors.doveGray,
+              //   isFullWidth: true,
+              // ),
+              // Container(
+              //   decoration: BoxDecoration(
+              //     borderRadius: BorderRadius.circular(5),
+              //     border: Border.all(
+              //       color: AppColors.kPrimaryColor,
+              //     ),
+              //   ),
+              //   child: const CustomTextFieldWidget(
+              //     hintText: Strings.phoneNumber,
+              //   ),
+              // ),
+              // const CustomSpaceWidget(
+              //   height: 10,
+              // ),
               CustomTextWidget(
                 text: Strings.detailsInformation,
                 fontSize: Dimens.fontSize15,

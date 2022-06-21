@@ -13,6 +13,7 @@ class CandidateTutorListWidget extends GetView<FrontendController> {
 
   @override
   Widget build(BuildContext context) {
+    print("This is the Screen");
     return controller.candidateTeacherList.value.teacherlist?.isEmpty ?? true
         ? Container()
         : SingleChildScrollView(
