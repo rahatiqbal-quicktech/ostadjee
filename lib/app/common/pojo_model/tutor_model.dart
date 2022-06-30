@@ -283,7 +283,7 @@ class Data {
 
 class Tdistrict {
   int? id;
-  String? divisionId;
+  int? divisionId;
   String? name;
   int? status;
   String? createdAt;

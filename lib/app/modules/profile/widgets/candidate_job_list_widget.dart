@@ -46,6 +46,7 @@ class CandidateJobListWidget extends GetView<FrontendController> {
                   createdAt: item.createdAt ?? "",
                   studentGender: item.sGender ?? "",
                   preferGender: item.sGender ?? "",
+                  postedjobModel: item,
                 );
               },
             ),

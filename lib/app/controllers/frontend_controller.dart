@@ -57,7 +57,10 @@ import 'package:ostadjee/app/modules/profile/widgets/tutor_profile_widget.dart';
 import 'package:ostadjee/app/modules/profile/widgets/tutor_withdraw_list_widget.dart';
 import 'package:ostadjee/app/repository/frontend_repository.dart';
 import 'package:ostadjee/app/routes/app_pages.dart';
+import 'package:ostadjee/changes/features/district_for_search/model/district_for_search_model.dart';
 import 'package:ostadjee/changes/features/tutor_department/model/tutor_department_model.dart';
+import 'package:share_plus/share_plus.dart';
+// import 'package:share_plus/share_plus.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:video_player/video_player.dart';
 
@@ -141,6 +144,7 @@ class FrontendController extends GetxController
   var confirmPasswordObsecure = true.obs;
 
   var slider = SliderModel().obs;
+  var temporary = RxString("");
 
   var featureTutor = FeatureTutorModel().obs;
   var featureJobs = TutorMatchJobModel().obs;
@@ -209,7 +213,8 @@ class FrontendController extends GetxController
   var candidateTeacherList = CandidateTeacherListModel().obs;
   var candidatePaymentList = CandidatePaymentListModel().obs;
 
-  late TabController tabController;
+  late TabController tabController =
+      TabController(vsync: this, length: profileTabs.length);
   late VideoPlayerController videoController;
 
   var haveVideo = false.obs;
@@ -533,7 +538,9 @@ class FrontendController extends GetxController
   }
 
   void onShareAppClick() {
-    Get.back();
+    // Get.back();
+    Share.share(
+        'Download Ostadjee from Play Store - https://play.google.com/store/apps/details?id=com.ostadjee.application');
   }
 
   void onRateAppClick() {
@@ -657,7 +664,15 @@ class FrontendController extends GetxController
 
     selectedArea = null;
 
-    getArea(selectedDivision!.id!);
+    // getArea(selectedDivision!.id!);
+  }
+
+  void selectDivisionAndgetArea(District? value) {
+    // selectedDivision = value;
+
+    selectedArea = null;
+
+    getArea(value!.id!);
   }
 
   void getArea(int id) async {
@@ -796,6 +811,7 @@ class FrontendController extends GetxController
 
     gender.add(Genders(value: "Male", text: "Male"));
     gender.add(Genders(value: "Female", text: "Female"));
+    gender.add(Genders(value: "Both", text: "Both"));
 
     var data = <String, dynamic>{};
     data['genders'] = gender.map((v) => v.toJson()).toList();
@@ -923,8 +939,7 @@ class FrontendController extends GetxController
     if (_response.id == ResponseCode.SUCCESSFUL) {
       tutionJobs(
           TutionJobsModel.fromJson(json.decode(_response.object.toString())));
-      print("This is tution jobs");
-      print(tutionJobs.value);
+      print("This is tution jobs ${tutionJobs.value}");
     } else {
       showErrorToast(_response.object.toString());
     }

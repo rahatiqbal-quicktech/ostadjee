@@ -6,10 +6,36 @@ import 'package:ostadjee/app/modules/widgets/custom_appbar_widget.dart';
 import 'package:ostadjee/app/modules/widgets/custom_bottom_bar_widget.dart';
 import 'package:ostadjee/app/modules/widgets/custom_drawer_widget.dart';
 
-class ProfileView extends GetView<FrontendController> {
+class ProfileView extends StatefulWidget {
   ProfileView({Key? key}) : super(key: key);
 
+  @override
+  State<ProfileView> createState() => _ProfileViewState();
+}
+
+class _ProfileViewState extends State<ProfileView>
+    with TickerProviderStateMixin {
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
+  final controller = Get.put(FrontendController());
+  late final TabController _tabController = controller.tabController;
+
+  @override
+  void initState() {
+    super.initState();
+
+    controller.notifyChanges();
+    controller.tabController =
+        TabController(vsync: this, length: controller.profileTabs.length);
+
+    // _tabController =
+    //     TabController(vsync: this, length: controller.profileTabs.length);
+  }
+
+  @override
+  void dispose() {
+    _tabController.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -45,7 +71,7 @@ class ProfileView extends GetView<FrontendController> {
               Container(
                 color: AppColors.white,
                 child: TabBar(
-                  controller: controller.tabController,
+                  controller: _tabController,
                   tabs: controller.profileTabs,
                   isScrollable: true,
                   indicatorColor: AppColors.kPrimaryColor,

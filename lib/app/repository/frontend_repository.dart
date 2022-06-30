@@ -185,6 +185,16 @@ class FrontEndRepository {
         method: "PUT", url: Constants.postTutorVerifyResend, headers: headers);
   }
 
+  //changed
+  Future<ResponseObject> postTutorOTPResendCandidate(String verifyPhone) async {
+    Map<String, String> headers = {
+      'verifyphone': verifyPhone,
+    };
+
+    return RepositoryHelper().apiCall(
+        method: "PUT", url: "candidate/resend/verify", headers: headers);
+  }
+
   Future<ResponseObject> getTeacherDashboard() async {
     return RepositoryHelper().apiCall(url: Constants.getTeacherDashboard);
   }

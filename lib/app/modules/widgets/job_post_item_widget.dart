@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:ostadjee/app/common/pojo_model/candidate_post_list_model.dart';
 import 'package:ostadjee/app/common/util/exports.dart';
 import 'package:ostadjee/app/modules/widgets/custom_inkwell_widget.dart';
 import 'package:ostadjee/app/modules/widgets/custom_space_widget.dart';
@@ -27,6 +28,7 @@ class JobPostItemWidget extends StatelessWidget {
       preferGender,
       latitude,
       longitude;
+  final Postedjob? postedjobModel;
 
   const JobPostItemWidget({
     Key? key,
@@ -50,6 +52,7 @@ class JobPostItemWidget extends StatelessWidget {
     this.preferGender = "",
     this.latitude = "",
     this.longitude = "",
+    this.postedjobModel,
   }) : super(key: key);
 
   @override
@@ -77,6 +80,7 @@ class JobPostItemWidget extends StatelessWidget {
               preferGender: preferGender,
               latitude: latitude,
               longitude: longitude,
+              postedjobModel: postedjobModel,
             ),
             backgroundColor: AppColors.white,
             isScrollControlled: true,

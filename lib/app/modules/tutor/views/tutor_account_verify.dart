@@ -7,6 +7,7 @@ import 'package:ostadjee/app/modules/widgets/custom_space_widget.dart';
 import 'package:ostadjee/app/modules/widgets/custom_text_button.dart';
 import 'package:ostadjee/app/modules/widgets/custom_text_field_widget.dart';
 import 'package:ostadjee/app/modules/widgets/custom_text_widget.dart';
+import 'package:timer_button/timer_button.dart';
 
 class TutorAccountVerify extends GetView<TutorController> {
   TutorAccountVerify({Key? key}) : super(key: key);
@@ -74,27 +75,38 @@ class TutorAccountVerify extends GetView<TutorController> {
                 const CustomSpaceWidget(
                   height: 20,
                 ),
-                CustomTextButton(
-                  onPressed: controller.onResendOTPClick,
-                  buttonColor: Colors.transparent,
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: const [
-                      Icon(
-                        Icons.refresh,
-                        color: AppColors.kPrimaryColor,
-                      ),
-                      CustomSpaceWidget(
-                        width: 10,
-                      ),
-                      CustomTextWidget(
-                        text: Strings.resend,
-                        color: AppColors.kPrimaryColor,
-                      ),
-                    ],
+                SizedBox(
+                  width: double.infinity,
+                  child: TimerButton(
+                    label: "Send OTP Again",
+                    timeOutInSeconds: 45,
+                    onPressed: controller.onResendOTPClick,
+                    disabledColor: Colors.grey,
+                    color: AppColors.kPrimaryColor,
+                    buttonType: ButtonType.ElevatedButton,
                   ),
                 ),
+                // CustomTextButton(
+                //   onPressed: controller.onResendOTPClick,
+                //   buttonColor: Colors.transparent,
+                //   child: Row(
+                //     mainAxisAlignment: MainAxisAlignment.center,
+                //     crossAxisAlignment: CrossAxisAlignment.center,
+                //     children: const [
+                //       Icon(
+                //         Icons.refresh,
+                //         color: AppColors.kPrimaryColor,
+                //       ),
+                //       CustomSpaceWidget(
+                //         width: 10,
+                //       ),
+                //       CustomTextWidget(
+                //         text: Strings.resend,
+                //         color: AppColors.kPrimaryColor,
+                //       ),
+                //     ],
+                //   ),
+                // ),
               ],
             ),
           ),

@@ -6,6 +6,7 @@ import 'package:ostadjee/app/controllers/frontend_controller.dart';
 import 'package:ostadjee/app/modules/widgets/custom_drawer_social_icons.dart';
 import 'package:ostadjee/app/modules/widgets/custom_listtile_widget.dart';
 import 'package:ostadjee/app/routes/app_pages.dart';
+import 'package:ostadjee/changes/features/contact_us/contact_us_screen.dart';
 
 import 'custom_drawer_header.dart';
 
@@ -145,22 +146,24 @@ class CustomDrawerWidget extends GetView<FrontendController> {
                     ),
                   ),
                   CustomListTileWidget(
-                    title: Strings.contactUs,
-                    onTap: controller.onContactUsClick,
-                  ),
+                      title: Strings.contactUs,
+                      onTap: () {
+                        Get.to(() => const ContactUsScreen());
+                      }
+                      // controller.onContactUsClick,
+                      ),
                   CustomListTileWidget(
                     title: Strings.shareApp,
                     onTap: controller.onShareAppClick,
                   ),
-                  GestureDetector(
+                  CustomListTileWidget(
+                    title: Strings.rateApp,
                     onTap: () {
                       LaunchReview.launch(
-                          androidAppId: "com.ostadjee.application");
+                        androidAppId: "com.ostadjee.application",
+                      );
+                      debugPrint("Rate app");
                     },
-                    child: CustomListTileWidget(
-                      title: Strings.rateApp,
-                      onTap: () {},
-                    ),
                   ),
                   CustomListTileWidget(
                     title: Strings.privacyPolicy,

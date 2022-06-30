@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:ostadjee/app/common/pojo_model/candidate_post_list_model.dart';
 import 'package:ostadjee/app/common/util/exports.dart';
 import 'package:ostadjee/app/controllers/frontend_controller.dart';
 import 'package:ostadjee/app/modules/widgets/custom_space_widget.dart';
@@ -7,6 +8,7 @@ import 'package:ostadjee/app/modules/widgets/custom_text_button.dart';
 import 'package:ostadjee/app/modules/widgets/custom_value_with_title_widget.dart';
 import 'package:ostadjee/changes/all_changed_controllers.dart';
 import 'package:ostadjee/changes/features/can_apply/can_apply_button.dart';
+import 'package:ostadjee/changes/features/edit_job_post/edit_job_post_screen.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 import 'custom_text_widget.dart';
@@ -28,6 +30,7 @@ class TutionJobBottomSheetWidget extends StatelessWidget
       preferGender,
       latitude,
       longitude;
+  final Postedjob? postedjobModel;
 
   TutionJobBottomSheetWidget({
     Key? key,
@@ -44,12 +47,16 @@ class TutionJobBottomSheetWidget extends StatelessWidget
     this.preferGender = "",
     this.latitude = "",
     this.longitude = "",
+    this.postedjobModel,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    jobMatchListController.getList();
-    canApplyFunctionController.getJobMatchIdList();
+    if (controller.tutor.value == true) {
+      jobMatchListController.getList();
+      canApplyFunctionController.getJobMatchIdList();
+    }
+
     return Column(
       mainAxisSize: MainAxisSize.min,
       children: [
@@ -228,7 +235,23 @@ class TutionJobBottomSheetWidget extends StatelessWidget
                 const CustomSpaceWidget(
                   height: 10,
                 ),
-              CanApplyButton(jobId: int.parse(jobId)),
+              controller.tutor.value == true
+                  ? CanApplyButton(jobId: int.parse(jobId))
+                  : SizedBox(
+                      width: double.infinity,
+                      child: ElevatedButton.icon(
+                        onPressed: () {
+                          Get.to(() => EditJobPostScreen(
+                                postedjobModel: postedjobModel ?? Postedjob(),
+                              ));
+                        },
+                        icon: const Icon(Icons.edit),
+                        label: const Text("Edit"),
+                        style: ElevatedButton.styleFrom(
+                          primary: AppColors.kPrimaryColor,
+                        ),
+                      ),
+                    ),
               // CustomTextButton(
               //   onPressed: () {
               //     controller.postApplyJob(jobId);

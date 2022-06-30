@@ -18,19 +18,19 @@ void main() {
   });
 }
 
-Future<void> _firebaseMessagingBackgroundHandler(RemoteMessage message) async {
-  await Firebase.initializeApp();
-}
+// Future<void> _firebaseMessagingBackgroundHandler(RemoteMessage message) async {
+//   await Firebase.initializeApp();
+// }
 
-const AndroidNotificationChannel channel = AndroidNotificationChannel(
-  'high_importance_channel',
-  'High Importance Notifications',
-  description: 'This channel is used for important notifications.',
-  importance: Importance.high,
-);
+// const AndroidNotificationChannel channel = AndroidNotificationChannel(
+//   'high_importance_channel',
+//   'High Importance Notifications',
+//   description: 'This channel is used for important notifications.',
+//   importance: Importance.high,
+// );
 
-final FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin =
-    FlutterLocalNotificationsPlugin();
+// final FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin =
+//     FlutterLocalNotificationsPlugin();
 
 class MyApp extends StatefulWidget {
   const MyApp({Key? key}) : super(key: key);
@@ -41,87 +41,89 @@ class MyApp extends StatefulWidget {
 
 class _MyAppState extends State<MyApp> {
   @override
-  void initState() {
-    setupFirebase();
+  // void initState() {
+  //   // setupFirebase();
 
-    super.initState();
-  }
+  //   super.initState();
+  // }
 
-  setupFirebase() async {
-    if (Platform.isIOS) {
-      requestForIos();
-    }
+  // setupFirebase() async {
+  //   if (Platform.isIOS) {
+  //     // requestForIos();
+  //   }
 
-    FirebaseMessaging.onBackgroundMessage(_firebaseMessagingBackgroundHandler);
+  // FirebaseMessaging.onBackgroundMessage(_firebaseMessagingBackgroundHandler);
 
-    await flutterLocalNotificationsPlugin
-        .resolvePlatformSpecificImplementation<
-            AndroidFlutterLocalNotificationsPlugin>()
-        ?.createNotificationChannel(channel);
+  // await flutterLocalNotificationsPlugin
+  //     .resolvePlatformSpecificImplementation<
+  //         AndroidFlutterLocalNotificationsPlugin>()
+  //     ?.createNotificationChannel(channel);
 
-    await FirebaseMessaging.instance
-        .setForegroundNotificationPresentationOptions(
-      alert: true,
-      badge: true,
-      sound: true,
-    );
+  // await FirebaseMessaging.instance
+  //     .setForegroundNotificationPresentationOptions(
+  //   alert: true,
+  //   badge: true,
+  //   sound: true,
+  // );
 
-    await FirebaseMessaging.instance.subscribeToTopic('ostadjee');
+  // await FirebaseMessaging.instance.subscribeToTopic('ostadjee');
 
-    FirebaseMessaging.instance.getInitialMessage();
+  // FirebaseMessaging.instance.getInitialMessage();
 
-    FirebaseMessaging.onMessage.listen((RemoteMessage? message) {
-      RemoteNotification? notification = message?.notification;
-      AndroidNotification? android = message?.notification?.android;
+  // FirebaseMessaging.onMessage.listen((RemoteMessage? message) {
+  //   RemoteNotification? notification = message?.notification;
+  //   AndroidNotification? android = message?.notification?.android;
 
-      if (notification != null && android != null) {
-        flutterLocalNotificationsPlugin.show(
-            notification.hashCode,
-            notification.title,
-            notification.body,
-            NotificationDetails(
-              android: AndroidNotificationDetails(
-                channel.id,
-                channel.name,
-                channelDescription: channel.description,
-                styleInformation: const BigTextStyleInformation(''),
-                icon: '@mipmap/launcher_icon',
-              ),
-            ));
-      }
-    });
+  //   if (notification != null && android != null) {
+  //     flutterLocalNotificationsPlugin.show(
+  //         notification.hashCode,
+  //         notification.title,
+  //         notification.body,
+  //         NotificationDetails(
+  //           android: AndroidNotificationDetails(
+  //             channel.id,
+  //             channel.name,
+  //             channelDescription: channel.description,
+  //             styleInformation: const BigTextStyleInformation(''),
+  //             icon: '@mipmap/launcher_icon',
+  //           ),
+  //         ));
+  //   }
+  // });
 
-    FirebaseMessaging.onMessageOpenedApp.listen((RemoteMessage message) {
-      Get.toNamed(Routes.SPLASH);
-    });
-  }
+  //   FirebaseMessaging.onMessageOpenedApp.listen((RemoteMessage message) {
+  //     Get.toNamed(Routes.SPLASH);
+  //   });
+  // }
 
-  requestForIos() async {
-    FirebaseMessaging messaging = FirebaseMessaging.instance;
-    NotificationSettings settings = await messaging.requestPermission(
-      alert: true,
-      announcement: false,
-      badge: true,
-      carPlay: false,
-      criticalAlert: false,
-      provisional: false,
-      sound: true,
-    );
+  // requestForIos() async {
+  //   FirebaseMessaging messaging = FirebaseMessaging.instance;
+  //   NotificationSettings settings = await messaging.requestPermission(
+  //     alert: true,
+  //     announcement: false,
+  //     badge: true,
+  //     carPlay: false,
+  //     criticalAlert: false,
+  //     provisional: false,
+  //     sound: true,
+  //   );
 
-    if (settings.authorizationStatus == AuthorizationStatus.authorized) {
-    } else if (settings.authorizationStatus ==
-        AuthorizationStatus.provisional) {
-    } else {}
-  }
+  //   if (settings.authorizationStatus == AuthorizationStatus.authorized) {
+  //   } else if (settings.authorizationStatus ==
+  //       AuthorizationStatus.provisional) {
+  //   } else {}
+  // }
 
   @override
   Widget build(BuildContext context) {
     ScreenUtil.init(
       BoxConstraints(
-        maxWidth: Get.width,
-        maxHeight: Get.height,
+        maxWidth: 300,
+        maxHeight: 600,
+        // maxWidth: Get.width,
+        // maxHeight: Get.height,
       ),
-      designSize: Get.size,
+      // designSize: Get.size,
     );
 
     return GetMaterialApp(

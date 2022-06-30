@@ -86,7 +86,7 @@ class ApplyTutionItemWidget extends StatelessWidget {
               ],
             ),
             CustomTextWidget(
-              text: name!,
+              text: name ?? "Not available",
               isFullWidth: true,
               fontSize: Dimens.fontSize16,
               color: AppColors.black,

@@ -14,12 +14,16 @@ import 'package:ostadjee/app/modules/widgets/custom_bottom_bar_widget.dart';
 import 'package:ostadjee/app/modules/widgets/custom_dropdown_textfield.dart';
 import 'package:ostadjee/app/modules/widgets/custom_space_widget.dart';
 import 'package:ostadjee/app/modules/widgets/custom_text_button.dart';
+import 'package:ostadjee/changes/all_changed_controllers.dart';
+import 'package:ostadjee/changes/features/district_for_search/model/district_for_search_model.dart';
 
-class SearchView extends GetView<FrontendController> {
-  const SearchView({Key? key}) : super(key: key);
+class SearchView extends GetView<FrontendController>
+    with AllChangedControllers {
+  SearchView({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    districtsForSearchController.getDistricts();
     return Scaffold(
         bottomNavigationBar: const CustomBottomBarWidget(),
         appBar: CustomAppbarWidget(
@@ -47,6 +51,21 @@ class SearchView extends GetView<FrontendController> {
                         controller.selectDivision(value!);
                       },
                     ),
+                  const CustomSpaceWidget(
+                    height: 20,
+                  ),
+                  CustomDropdownTextField(
+                    title: "Select District / City",
+                    dataList: districtsForSearchController.districtsList.value,
+                    item: (District? item) {
+                      return item?.text ?? "";
+                    },
+                    onChanged: (District? value) {
+                      // controller.selectDivision(value!);
+                      controller.selectDivisionAndgetArea(value);
+                      print(value?.text);
+                    },
+                  ),
                   if (controller.area.value.areas?.isNotEmpty ?? false)
                     const CustomSpaceWidget(
                       height: 20,

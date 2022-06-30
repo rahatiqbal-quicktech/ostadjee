@@ -9,7 +9,7 @@ class AllTutorsController extends GetxController {
     var temp = await AllTutorsService().fetchAllTutors();
     if (temp != null) {
       list.value = temp.alltutors as List<Alltutor>;
-      print(list.value);
+      // print(list.value);
     }
   }
 }

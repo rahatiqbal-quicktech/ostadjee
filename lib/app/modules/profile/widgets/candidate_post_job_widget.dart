@@ -240,6 +240,21 @@ class CandidatePostJobWidget extends GetView<FrontendController>
               ),
               if (controller.division.value.divisions?.isNotEmpty ?? false)
                 CustomDropdownTextField(
+                  title: "Select Division",
+                  dataList: controller.division.value.divisions!,
+                  item: (Divisions item) {
+                    return item.text ?? "";
+                  },
+                  onChanged: (Divisions? value) {
+                    controller.selectDivision(value!);
+                  },
+                  prefixIcon: const Icon(
+                    Icons.location_city_outlined,
+                    color: AppColors.doveGray,
+                  ),
+                ),
+              if (controller.division.value.divisions?.isNotEmpty ?? false)
+                CustomDropdownTextField(
                   title: Strings.selectCityName,
                   dataList: controller.division.value.divisions!,
                   item: (Divisions item) {

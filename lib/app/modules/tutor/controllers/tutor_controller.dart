@@ -102,19 +102,19 @@ class TutorController extends GetxController {
 
   void onRegisterClick(bool isSocialLogin) async {
     if (agreeTerms.value) {
-    final _response = await FrontEndRepository()
-        .postTutorRegister(name!, email!, phone!, password!);
-    if (_response.id == ResponseCode.SUCCESSFUL) {
-      if (isSocialLogin) {
-        onLoginClick(true);
-      } else {
-        // showSuccessToast("Registration successfully");
+      final _response = await FrontEndRepository()
+          .postTutorRegister(name!, email!, phone!, password!);
+      if (_response.id == ResponseCode.SUCCESSFUL) {
+        if (isSocialLogin) {
+          onLoginClick(true);
+        } else {
+          // showSuccessToast("Registration successfully");
 
-        Get.offAndToNamed(Routes.TUTOR_VERIFY);
+          Get.offAndToNamed(Routes.TUTOR_VERIFY);
+        }
+      } else {
+        showErrorToast(_response.object.toString());
       }
-    } else {
-      showErrorToast(_response.object.toString());
-    }
     } else {
       showErrorToast(Strings.agreeTermsAndConditionWarning);
     }

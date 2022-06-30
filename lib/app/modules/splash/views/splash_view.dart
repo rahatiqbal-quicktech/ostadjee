@@ -2,8 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:ostadjee/app/common/constants.dart';
 import 'package:ostadjee/app/common/util/exports.dart';
+import 'package:ostadjee/app/modules/splash/views/landing_signin.dart';
+import 'package:ostadjee/app/modules/tutor/views/tutor_login.dart';
 import 'package:ostadjee/app/routes/app_pages.dart';
 import 'package:ostadjee/changes/all_changed_controllers.dart';
+import 'package:ostadjee/changes/dummy_screen.dart';
+import 'package:ostadjee/changes/features/landing/login_page.dart';
 
 class SplashView extends StatefulWidget {
   const SplashView({Key? key}) : super(key: key);
@@ -27,7 +31,11 @@ class _SplashViewState extends State<SplashView> with AllChangedControllers {
 
     Future.delayed(const Duration(seconds: 3), () async {
       if (token.isEmpty) {
-        Get.offAndToNamed(Routes.LANDING);
+        Get.to(() => LoginPage());
+
+        // Get.offAndToNamed(Routes.LANDING);
+        // Get.to(() => LandingSignin());
+        // Get.to(() => const DummyScreen());
       } else {
         Get.offAndToNamed(Routes.HOME);
       }

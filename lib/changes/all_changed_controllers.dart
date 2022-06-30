@@ -1,6 +1,8 @@
 import 'package:get/get.dart';
 import 'package:ostadjee/changes/features/all_tutors/controller/all_tutors_controller.dart';
 import 'package:ostadjee/changes/features/can_apply/controller/can_apply_function.dart';
+import 'package:ostadjee/changes/features/district_for_search/controller/district_for_search_controller.dart';
+import 'package:ostadjee/changes/features/edit_job_post/controller/edit_job_post_controller.dart';
 import 'package:ostadjee/changes/features/featured_tutor/controller/featured_tutors_controller.dart';
 import 'package:ostadjee/changes/features/job_match_list/controller/job_match_list_controller.dart';
 import 'package:ostadjee/changes/features/tuition_information/controller/tuition_information_controller.dart';
@@ -23,4 +25,6 @@ class AllChangedControllers {
   final jobMatchListController = Get.put(JobMatchListController());
   final tuitionInformationController = Get.put(TuitionInformationController());
   final allTutorsController = Get.put(AllTutorsController());
+  final editJobPostController = Get.put(EditJobPostController());
+  final districtsForSearchController = Get.put(DitrictForSearchController());
 }

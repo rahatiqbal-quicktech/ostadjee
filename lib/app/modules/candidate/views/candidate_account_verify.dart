@@ -7,6 +7,7 @@ import 'package:ostadjee/app/modules/widgets/custom_space_widget.dart';
 import 'package:ostadjee/app/modules/widgets/custom_text_button.dart';
 import 'package:ostadjee/app/modules/widgets/custom_text_field_widget.dart';
 import 'package:ostadjee/app/modules/widgets/custom_text_widget.dart';
+import 'package:timer_button/timer_button.dart';
 
 class CandidateAccountVerify extends GetView<CandidateController> {
   CandidateAccountVerify({Key? key}) : super(key: key);
@@ -68,6 +69,17 @@ class CandidateAccountVerify extends GetView<CandidateController> {
                 CustomTextButton(
                   onPressed: controller.onVerifyClick,
                   title: Strings.submit,
+                ),
+                SizedBox(
+                  width: double.infinity,
+                  child: TimerButton(
+                    label: "Send OTP Again",
+                    timeOutInSeconds: 45,
+                    onPressed: controller.onResendOTPClickCandidate(),
+                    disabledColor: Colors.grey,
+                    color: AppColors.kPrimaryColor,
+                    buttonType: ButtonType.ElevatedButton,
+                  ),
                 ),
               ],
             ),

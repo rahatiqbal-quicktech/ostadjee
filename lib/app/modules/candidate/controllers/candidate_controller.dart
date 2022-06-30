@@ -92,6 +92,21 @@ class CandidateController extends GetxController {
     }
   }
 
+  onResendOTPClick() {}
+
+  // changed
+
+  onResendOTPClickCandidate() async {
+    final _response = await FrontEndRepository().postTutorOTPResend(
+      phoneController.text,
+    );
+    if (_response.id == ResponseCode.SUCCESSFUL) {
+      showSuccessToast("OTP Resend");
+    } else {
+      showErrorToast(_response.object.toString());
+    }
+  }
+
   void onTermsChange(bool? value) {
     agreeTerms(value ?? false);
   }
