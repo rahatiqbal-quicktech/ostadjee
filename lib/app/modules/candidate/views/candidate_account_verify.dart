@@ -75,7 +75,9 @@ class CandidateAccountVerify extends GetView<CandidateController> {
                   child: TimerButton(
                     label: "Send OTP Again",
                     timeOutInSeconds: 45,
-                    onPressed: controller.onResendOTPClickCandidate(),
+                    onPressed: () {
+                      controller.onResendOTPClickCandidate();
+                    },
                     disabledColor: Colors.grey,
                     color: AppColors.kPrimaryColor,
                     buttonType: ButtonType.ElevatedButton,

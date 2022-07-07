@@ -80,7 +80,9 @@ class TutorAccountVerify extends GetView<TutorController> {
                   child: TimerButton(
                     label: "Send OTP Again",
                     timeOutInSeconds: 45,
-                    onPressed: controller.onResendOTPClick,
+                    onPressed: () {
+                      controller.onResendOTPClick;
+                    },
                     disabledColor: Colors.grey,
                     color: AppColors.kPrimaryColor,
                     buttonType: ButtonType.ElevatedButton,

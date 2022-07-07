@@ -167,6 +167,7 @@ class Utils {
         ),
         name: 'loadingDialog',
       );
+      // debugPrint("///Dialog shows up here. Commented due to error.");
     }
   }
 
